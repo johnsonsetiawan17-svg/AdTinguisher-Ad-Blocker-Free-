@@ -1,34 +1,20 @@
 {
   "manifest_version": 3,
-  "name": "AdTinguisher - Ad Blocker Free",
-  "version": "1.0.0",
-  "description": "Free ad blocker extension to block ads and improve browsing experience",
-  "permissions": [
-    "webRequest",
-    "webRequestBlocking",
-    "tabs",
-    "storage"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
-  "background": {
-    "service_worker": "background.js"
+  "name": "AdTinguisher",
+  "version": "1.2",
+  "description": "Extinguishing ads completely!",
+  "permissions": ["declarativeNetRequest"],
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "ruleset_1",
+      "enabled": true,
+      "path": "rules.json"
+    }]
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "run_at": "document_start"
+      "js": ["content.js"]
     }
-  ],
-  "action": {
-    "default_popup": "popup.html",
-    "default_title": "AdTinguisher - Ad Blocker"
-  },
-  "icons": {
-    "16": "images/icon16.png",
-    "48": "images/icon48.png",
-    "128": "images/icon128.png"
-  }
+  ]
 }
